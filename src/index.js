@@ -3,11 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import AddQuzi from './Pages/AddQuzi';
+import LoginContext from './Context/LoginContext';
+
+let router=createBrowserRouter([
+  {
+    path:'/',
+    element:<Login/>
+  },
+  {
+    path:'register',
+    element:<Register/>
+  },
+  {
+    path:'question',
+    element:<AddQuzi/>
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <LoginContext>
+       <RouterProvider router={router}/>
+    </LoginContext>
   </React.StrictMode>
 );
 
